@@ -9,44 +9,44 @@
 #   end
 # db/seeds.rb
 
-# puts "Seeding admins..."
+puts "Seeding admins..."
 
-# # Create sample admins
-# Admin.find_or_create_by!(username: "admin1") do |admin|
-#   admin.email = "admin1@example.com"
-#   admin.firstName = "Admin"
-#   admin.password_digest = "adminpass123"
-# end
+# Create sample admins
+Admin.find_or_create_by!(username: "admin1") do |admin|
+  admin.email = "admin1@example.com"
+  admin.firstName = "Admin"
+  admin.password_digest = "adminpass123"
+end
 
-# Admin.find_or_create_by!(username: "admin2") do |admin|
-#   admin.email = "admin2@example.com"
-#   admin.firstName = "SuperAdmin"
-#   admin.password_digest = "supersecure"
-# end
+Admin.find_or_create_by!(username: "admin2") do |admin|
+  admin.email = "admin2@example.com"
+  admin.firstName = "SuperAdmin"
+  admin.password_digest = "supersecure"
+end
 
-# admin3 = Admin.find_or_create_by!(username: "admin3") do |admin|
-#   admin.email = "admin3@example.com"
-#   admin.firstName = "AdminThree"
-#   admin.password_digest = "adminpass123"
-# end
+admin3 = Admin.find_or_create_by!(username: "admin3") do |admin|
+  admin.email = "admin3@example.com"
+  admin.firstName = "AdminThree"
+  admin.password_digest = "adminpass123"
+end
 
-# admin4 = Admin.find_or_create_by!(username: "admin4") do |admin|
-#   admin.email = "admin4@example.com"
-#   admin.firstName = "AdminFour"
-#   admin.password_digest = "adminpass123"
-# end
+admin4 = Admin.find_or_create_by!(username: "admin4") do |admin|
+  admin.email = "admin4@example.com"
+  admin.firstName = "AdminFour"
+  admin.password_digest = "adminpass123"
+end
 
-# admin5 = Admin.find_or_create_by!(username: "admin5") do |admin|
-#   admin.email = "admin5@example.com"
-#   admin.firstName = "AdminFive"
-#   admin.password_digest = "adminpass123"
-# end
+admin5 = Admin.find_or_create_by!(username: "admin5") do |admin|
+  admin.email = "admin5@example.com"
+  admin.firstName = "AdminFive"
+  admin.password_digest = "adminpass123"
+end
 
-# admin6 = Admin.find_or_create_by!(username: "admin6") do |admin|
-#   admin.email = "admin6@example.com"
-#   admin.firstName = "AdminSix"
-#   admin.password_digest = "adminpass123"
-# end
+admin6 = Admin.find_or_create_by!(username: "admin6") do |admin|
+  admin.email = "admin6@example.com"
+  admin.firstName = "AdminSix"
+  admin.password_digest = "adminpass123"
+end
 
 puts "Seeding organizations..."
 
