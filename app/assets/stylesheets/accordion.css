@@ -55,5 +55,5 @@
 
 /* Optional: Reduce the line-height for tighter spacing */
 .event-details {
-    line-height: .5; /* Adjust line-height for overall tighter vertical spacing */
+    line-height: 1; /* Adjust line-height for overall tighter vertical spacing */
 }
