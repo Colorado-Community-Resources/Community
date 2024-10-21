@@ -53,16 +53,7 @@
     transform: translateY(-50%) rotate(180deg); /* Rotate caret icon when expanded */
 }
 
-/* Adjust spacing for elements inside event-details */
-.event-details .event-title,
-.event-details .event-date,
-.event-details .event-location {
-    margin: 2px 0; /* Reduce the margin between each detail */
-    padding: 0; /* Remove any default padding */
-    font-size: 16px; /* Optional: Adjust the font size */
-}
-
 /* Optional: Reduce the line-height for tighter spacing */
 .event-details {
-    line-height: 1; /* Adjust line-height for overall tighter vertical spacing */
+    line-height: .5; /* Adjust line-height for overall tighter vertical spacing */
 }
