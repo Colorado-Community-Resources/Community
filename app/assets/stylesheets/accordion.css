@@ -2,8 +2,9 @@
   .accordion-button {
     display: flex;
     background-color: #28a745;
-    color: white;
-    font-size: 18px;
+    color: black;
+    font-weight: bold;
+    font-size: 20px!important;
     padding: 15px;
     border-radius: 8px;
     border: 2px solid #28a745;
@@ -13,13 +14,13 @@
   }
   
   .accordion-button:not(.collapsed) {
-    background-color: #218838;
+    background-color: #28a745;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
   }
-  
+
   .accordion-button:hover {
-    background-color: #218838;
+    background-color: #edbe24;
     color: #fff;
   }
   
