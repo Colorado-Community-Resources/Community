@@ -9,44 +9,44 @@
 #   end
 # db/seeds.rb
 
-puts "Seeding admins..."
+# puts "Seeding admins..."
 
-# Create sample admins
-Admin.find_or_create_by!(username: "admin1") do |admin|
-  admin.email = "admin1@example.com"
-  admin.firstName = "Admin"
-  admin.password_digest = "adminpass123"
-end
+# # Create sample admins
+# Admin.find_or_create_by!(username: "admin1") do |admin|
+#   admin.email = "admin1@example.com"
+#   admin.firstName = "Admin"
+#   admin.password_digest = "adminpass123"
+# end
 
-Admin.find_or_create_by!(username: "admin2") do |admin|
-  admin.email = "admin2@example.com"
-  admin.firstName = "SuperAdmin"
-  admin.password_digest = "supersecure"
-end
+# Admin.find_or_create_by!(username: "admin2") do |admin|
+#   admin.email = "admin2@example.com"
+#   admin.firstName = "SuperAdmin"
+#   admin.password_digest = "supersecure"
+# end
 
-admin3 = Admin.find_or_create_by!(username: "admin3") do |admin|
-  admin.email = "admin3@example.com"
-  admin.firstName = "AdminThree"
-  admin.password_digest = "adminpass123"
-end
+# admin3 = Admin.find_or_create_by!(username: "admin3") do |admin|
+#   admin.email = "admin3@example.com"
+#   admin.firstName = "AdminThree"
+#   admin.password_digest = "adminpass123"
+# end
 
-admin4 = Admin.find_or_create_by!(username: "admin4") do |admin|
-  admin.email = "admin4@example.com"
-  admin.firstName = "AdminFour"
-  admin.password_digest = "adminpass123"
-end
+# admin4 = Admin.find_or_create_by!(username: "admin4") do |admin|
+#   admin.email = "admin4@example.com"
+#   admin.firstName = "AdminFour"
+#   admin.password_digest = "adminpass123"
+# end
 
-admin5 = Admin.find_or_create_by!(username: "admin5") do |admin|
-  admin.email = "admin5@example.com"
-  admin.firstName = "AdminFive"
-  admin.password_digest = "adminpass123"
-end
+# admin5 = Admin.find_or_create_by!(username: "admin5") do |admin|
+#   admin.email = "admin5@example.com"
+#   admin.firstName = "AdminFive"
+#   admin.password_digest = "adminpass123"
+# end
 
-admin6 = Admin.find_or_create_by!(username: "admin6") do |admin|
-  admin.email = "admin6@example.com"
-  admin.firstName = "AdminSix"
-  admin.password_digest = "adminpass123"
-end
+# admin6 = Admin.find_or_create_by!(username: "admin6") do |admin|
+#   admin.email = "admin6@example.com"
+#   admin.firstName = "AdminSix"
+#   admin.password_digest = "adminpass123"
+# end
 
 puts "Seeding organizations..."
 
@@ -195,7 +195,7 @@ Event.find_or_create_by!(title: "Community Food Drive", eventDate: Date.today + 
   event.eventstatus = true
   event.organization_id = "org1@example.com"
   event.user_id = "user1"
-  event.admin_id = "admin1"
+  event.admin_id = "admin"
 end
 
 Event.find_or_create_by!(title: "Virtual Job Fair", eventDate: Date.today + 7) do |event|
@@ -210,7 +210,7 @@ Event.find_or_create_by!(title: "Virtual Job Fair", eventDate: Date.today + 7) d
   event.eventstatus = true
   event.organization_id = "org2@example.com"
   event.user_id = "user2"
-  event.admin_id = "admin2"
+  event.admin_id = "admin"
 end
 
 Event.find_or_create_by!(title: "Virtual Tech Meetup", eventDate: Date.today + 5) do |event|
@@ -225,7 +225,7 @@ Event.find_or_create_by!(title: "Virtual Tech Meetup", eventDate: Date.today + 5
   event.eventstatus = true
   event.organization_id = "org2@example.com"
   event.user_id = "user2"
-  event.admin_id = "admin2"
+  event.admin_id = "admin"
 end
 
 Event.find_or_create_by!(title: "Neighborhood Cleanup", eventDate: Date.today + 10) do |event|
@@ -240,7 +240,7 @@ Event.find_or_create_by!(title: "Neighborhood Cleanup", eventDate: Date.today + 
   event.eventstatus = true
   event.organization_id = "org3@example.com"
   event.user_id = "user3"
-  event.admin_id = "admin3"
+  event.admin_id = "admin"
 end
 
 Event.find_or_create_by!(title: "Coding Bootcamp", eventDate: Date.today + 14) do |event|
@@ -255,7 +255,7 @@ Event.find_or_create_by!(title: "Coding Bootcamp", eventDate: Date.today + 14) d
   event.eventstatus = true
   event.organization_id = "org4@example.com"
   event.user_id = "user4"
-  event.admin_id = "admin4"
+  event.admin_id = "admin"
 end
 
 Event.find_or_create_by!(title: "Mental Health Awareness Webinar", eventDate: Date.today + 7) do |event|
@@ -270,7 +270,7 @@ Event.find_or_create_by!(title: "Mental Health Awareness Webinar", eventDate: Da
   event.eventstatus = true
   event.organization_id = "org5@example.com"
   event.user_id = "user5"
-  event.admin_id = "admin5"
+  event.admin_id = "admin"
 end
 
 Event.find_or_create_by!(title: "Back-to-School Supply Drive", eventDate: Date.today + 20) do |event|
@@ -285,7 +285,7 @@ Event.find_or_create_by!(title: "Back-to-School Supply Drive", eventDate: Date.t
   event.eventstatus = true
   event.organization_id = "org6@example.com"
   event.user_id = "user6"
-  event.admin_id = "admin6"
+  event.admin_id = "admin"
 end
 
 puts "Finished seeding events!"
