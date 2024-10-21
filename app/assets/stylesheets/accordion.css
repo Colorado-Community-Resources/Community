@@ -14,7 +14,7 @@
   }
   
   .accordion-button:not(.collapsed) {
-    background-color: #28a745;
+    background-color: #a30000!;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
   }
@@ -37,8 +37,8 @@
   }
   
   .accordion-button:focus {
-    box-shadow: none;
-  }
+    box-shadow: none !important;
+}
 
 .accordion-button::after {
     position: absolute;
@@ -51,4 +51,18 @@
 /* Change caret icon direction when expanded */
 .accordion-button:not(.collapsed)::after {
     transform: translateY(-50%) rotate(180deg); /* Rotate caret icon when expanded */
+}
+
+/* Adjust spacing for elements inside event-details */
+.event-details .event-title,
+.event-details .event-date,
+.event-details .event-location {
+    margin: 2px 0; /* Reduce the margin between each detail */
+    padding: 0; /* Remove any default padding */
+    font-size: 16px; /* Optional: Adjust the font size */
+}
+
+/* Optional: Reduce the line-height for tighter spacing */
+.event-details {
+    line-height: 1; /* Adjust line-height for overall tighter vertical spacing */
 }
