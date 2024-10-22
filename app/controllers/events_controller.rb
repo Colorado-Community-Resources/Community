@@ -26,6 +26,9 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     @event.user_id = current_user.id
+    @event.admin_id = Admin.first
+    @event.eventstatus = false
+
 
     respond_to do |format|
       if @event.save
