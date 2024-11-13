@@ -5,26 +5,26 @@ class PagesController < ApplicationController
   end
   
   def food
-    @organizations = Organization.all
+    @organizations = Organization.where(category: 'Food')
   end
 
   def housing
-    @organizations = Organization.all
+    @organizations = Organization.where(category: 'Housing')
   end
 
   def healthcare
-    @organizations = Organization.all
+    @organizations = Organization.where(category: 'Healthcare')
   end
 
   def education
-    @organizations = Organization.all
+    @organizations = Organization.where(category: 'Education')
   end
 
   def childcare
-    @organizations = Organization.all
+    @organizations = Organization.where(category: 'Childcare')
   end
 
   def legal_resources
-    @organizations = Organization.all
+    @organizations = Organization.where(category: 'Legal Resources')
   end
 end
