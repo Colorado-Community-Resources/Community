@@ -80,6 +80,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_29_215645) do
 
   create_table "organizations", primary_key: "organizationId", force: :cascade do |t|
     t.string "org_name", limit: 255, null: false
+    t.string "category", null: false
     t.string "street", limit: 255, null: false
     t.string "city", limit: 100, null: false
     t.string "org_state", limit: 2, default: "CO", null: false
@@ -92,6 +93,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_29_215645) do
     t.string "admin_username", null: false
     t.datetime "created_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.datetime "updated_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.check_constraint "category::text = ANY (ARRAY['Food'::character varying, 'Housing'::character varying, 'Healthcare'::character varying, 'Education'::character varying, 'Childcare'::character varying, 'Legal Resources'::character varying]::text[])", name: "check_category"
   end
 
   create_table "question_answer_rels", force: :cascade do |t|
