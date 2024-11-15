@@ -5,26 +5,26 @@ class PagesController < ApplicationController
   end
   
   def food
-    @organizations = Organization.where(category: 'Food')
+    @organizations = Organization.joins(:categories).where(categories: { abbv: 'FOOD' })
   end
 
   def housing
-    @organizations = Organization.where(category: 'Housing')
+    @organizations = Organization.joins(:categories).where(categories: { abbv: 'HSG' })
   end
 
   def healthcare
-    @organizations = Organization.where(category: 'Healthcare')
+    @organizations = Organization.joins(:categories).where(categories: { abbv: 'HLTH' })
   end
 
   def education
-    @organizations = Organization.where(category: 'Education')
+    @organizations = Organization.joins(:categories).where(categories: { abbv: 'EDU' })
   end
 
   def childcare
-    @organizations = Organization.where(category: 'Childcare')
+    @organizations = Organization.joins(:categories).where(categories: { abbv: 'CHLD' })
   end
 
   def legal_resources
-    @organizations = Organization.where(category: 'Legal Resources')
+    @organizations = Organization.joins(:categories).where(categories: { abbv: 'LEGL' })
   end
 end

@@ -80,7 +80,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_29_215645) do
 
   create_table "organizations", primary_key: "organizationId", force: :cascade do |t|
     t.string "org_name", limit: 255, null: false
-    t.string "category", null: false
     t.string "street", limit: 255, null: false
     t.string "city", limit: 100, null: false
     t.string "org_state", limit: 2, default: "CO", null: false
@@ -93,7 +92,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_29_215645) do
     t.string "admin_username", null: false
     t.datetime "created_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.datetime "updated_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
-    t.check_constraint "category::text = ANY (ARRAY['Food'::character varying, 'Housing'::character varying, 'Healthcare'::character varying, 'Education'::character varying, 'Childcare'::character varying, 'Legal Resources'::character varying]::text[])", name: "check_category"
   end
 
   create_table "question_answer_rels", force: :cascade do |t|
@@ -147,16 +145,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_29_215645) do
 
   add_foreign_key "classifications", "categories", column: "categoryabbr_id", primary_key: "abbv"
   add_foreign_key "classifications", "organizations", column: "organizationID_id", primary_key: "organizationId"
-  add_foreign_key "dependents", "users", column: "userID_id", primary_key: "username", on_update: :cascade
+  add_foreign_key "dependents", "users", column: "userID_id", primary_key: "username"
   add_foreign_key "events", "admins", primary_key: "username", on_delete: :nullify
   add_foreign_key "events", "organizations", primary_key: "organizationId"
-  add_foreign_key "events", "users", primary_key: "username", on_update: :cascade
+  add_foreign_key "events", "users", primary_key: "username"
   add_foreign_key "favorites", "organizations", column: "organizationID_id", primary_key: "organizationId"
-  add_foreign_key "favorites", "users", column: "userID_id", primary_key: "username", on_update: :cascade
+  add_foreign_key "favorites", "users", column: "userID_id", primary_key: "username"
   add_foreign_key "reviews", "admins", column: "adminID_id", primary_key: "username", on_delete: :nullify
   add_foreign_key "reviews", "organizations", column: "organizationID_id", primary_key: "organizationId"
-  add_foreign_key "reviews", "users", column: "userID_id", primary_key: "username", on_update: :cascade
+  add_foreign_key "reviews", "users", column: "userID_id", primary_key: "username"
   add_foreign_key "surveys", "questions", column: "questionID_id", primary_key: "questionID"
-  add_foreign_key "surveys", "users", column: "userID_id", primary_key: "username", on_update: :cascade
-  
+  add_foreign_key "surveys", "users", column: "userID_id", primary_key: "username"
 end

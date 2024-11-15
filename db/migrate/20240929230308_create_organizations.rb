@@ -2,7 +2,6 @@ class CreateOrganizations < ActiveRecord::Migration[7.1]
   def change
     create_table :organizations, primary_key: :organizationId do |t|
       t.string :org_name, null: false, limit: 255
-      t.string :category, null: false
       t.string :street, null: false, limit: 255
       t.string :city, null: false, limit: 100
       t.string :org_state, null: false, limit: 2, default: 'CO'
@@ -15,11 +14,5 @@ class CreateOrganizations < ActiveRecord::Migration[7.1]
       t.string :admin_username, null: false #added for accountability purposes
       t.timestamps default: -> { 'CURRENT_TIMESTAMP' } # Note: This is a Rails shortcut that automatically creates two columns in the table. SO COOL! LOL, eeven if current_timestamp is not added it will do it
     end
-
-    execute <<-SQL
-      ALTER TABLE organizations
-      ADD CONSTRAINT check_category
-      CHECK (category IN ('Food', 'Housing', 'Healthcare', 'Education', 'Childcare', 'Legal Resources'))
-    SQL
   end
 end
