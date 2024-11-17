@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_secure_password
+  has_many :password_resets, foreign_key: :user_id, primary_key: :username, dependent: :destroy
 
   # Associations
   has_many :dependents, class_name: 'Dependent', foreign_key: :userID_id, dependent: :destroy
@@ -47,7 +48,16 @@ class User < ApplicationRecord
     message: "must be at least 8 characters long, contain at least one lowercase letter, one uppercase letter, one number, and one special character"
     }, if: :password_required?
 
-
+  def initiate_password_reset
+    password_reset = password_resets.create!
+    token = password_reset.generate_reset_digest
+    token  # Return the raw token so it can be used in the email
+  end
+  
+  def self.digest(string)
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
+    BCrypt::Password.create(string, cost: cost)
+  end
 
   private
 

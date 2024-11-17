@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'password_resets/new'
+  get 'password_resets/create'
+  get 'password_resets/edit'
+  get 'password_resets/update'
   get 'pages/about_us'
   get 'pages/survey'
 
@@ -21,6 +25,7 @@ Rails.application.routes.draw do
   resources :users, param: :username, only: [:index, :new, :create, :show, :edit, :update, :destroy]
   resources :events
   resources :organizations
+  resources :password_resets, only: [:new, :create, :edit, :update]
   
   root "pages#home"
   get 'pages/home'
