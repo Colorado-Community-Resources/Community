@@ -48,11 +48,15 @@ class User < ApplicationRecord
     message: "must be at least 8 characters long, contain at least one lowercase letter, one uppercase letter, one number, and one special character"
     }, if: :password_required?
 
-  def initiate_password_reset
-    password_reset = password_resets.create!
-    token = password_reset.generate_reset_digest
-    token  # Return the raw token so it can be used in the email
-  end
+    def initiate_password_reset
+      token = SecureRandom.urlsafe_base64
+      password_reset = password_resets.build(
+        reset_digest: User.digest(token),
+        reset_sent_at: Time.zone.now
+      )
+      password_reset.save!
+      token  # Return the raw token so it can be used in the email
+    end
   
   def self.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost

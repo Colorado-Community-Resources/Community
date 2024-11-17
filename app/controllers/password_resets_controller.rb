@@ -29,21 +29,63 @@ class PasswordResetsController < ApplicationController
       flash[:success] = "Password has been reset."
       redirect_to @user
     else
+      Rails.logger.info "Password update failed: #{@user.errors.full_messages}"
       render 'edit'
     end
   end
 
+
   private
+
+  # def get_user
+  #   @password_reset = PasswordReset.find_by(user_id: params[:user_id])
+  #   if @password_reset && BCrypt::Password.new(@password_reset.reset_digest).is_password?(params[:id])
+  #     @user = @password_reset.user
+  #   else
+  #     flash[:alert] = "Invalid password reset link."
+  #     redirect_to root_url
+  #   end
+  # end
+
+  # def get_user
+  #   @password_reset = PasswordReset.find_by(user_id: params[:user_id])
+  #   if @password_reset && BCrypt::Password.new(@password_reset.reset_digest).is_password?(params[:token])
+  #     @user = @password_reset.user
+  #   else
+  #     flash[:alert] = "Invalid password reset link."
+  #     redirect_to root_url
+  #   end
+  # end
+  
+
+  # def get_user
+  #   @password_reset = PasswordReset.find_by(user_id: params[:user_id], reset_digest: params[:id])
+  #   if @password_reset && BCrypt::Password.new(@password_reset.reset_digest).is_password?(params[:id])
+  #     @user = @password_reset.user
+  #   else
+  #     flash[:alert] = "Invalid password reset link."
+  #     redirect_to root_url
+  #   end
+  # end
 
   def get_user
     @password_reset = PasswordReset.find_by(user_id: params[:user_id])
-    if @password_reset && BCrypt::Password.new(@password_reset.reset_digest).is_password?(params[:id])
-      @user = @password_reset.user
+    if @password_reset
+      if BCrypt::Password.new(@password_reset.reset_digest).is_password?(params[:token])
+        @user = @password_reset.user
+        Rails.logger.info "Password reset link validated successfully for user: #{@user.username}"
+      else
+        Rails.logger.info "Token does not match for user_id: #{params[:user_id]}"
+        flash[:alert] = "Invalid password reset link."
+        redirect_to root_url
+      end
     else
+      Rails.logger.info "Password reset record not found for user_id: #{params[:user_id]}"
       flash[:alert] = "Invalid password reset link."
       redirect_to root_url
     end
   end
+  
 
   def check_expiration
     if @password_reset.expired?
@@ -55,3 +97,4 @@ class PasswordResetsController < ApplicationController
   def user_params
     params.require(:user).permit(:password, :password_confirmation)
   end
+end
